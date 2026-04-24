@@ -7,6 +7,7 @@ const Navbar = () => {
       <div className="flex gap-4">
         <Link to="/register">Register</Link>
         <Link to="/students">Students</Link>
+        <Link to="/course">Courses</Link>
       </div>
 
       <ThemeToggle />

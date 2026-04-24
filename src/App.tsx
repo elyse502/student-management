@@ -1,15 +1,20 @@
-import { Navigate, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import MainLayout from "./components/layout/MainLayout";
+import CoursesPage from "./pages/Course/CoursesPage";
+import CourseDetailsPage from "./pages/Course/CourseDetailsPage";
 
 const App = () => {
   return (
     <MainLayout>
       <Routes>
         <Route path="/" element={<Navigate to="/register" />} />
+
         <Route path="/register" element={<div>Register</div>} />
         <Route path="/confirmation" element={<div>Confirmation</div>} />
         <Route path="/students" element={<div>Students</div>} />
-        <Route path="/course/:courseName" element={<div>Course</div>} />
+
+        <Route path="/course" element={<CoursesPage />} />
+        <Route path="/course/:courseName" element={<CourseDetailsPage />} />
       </Routes>
     </MainLayout>
   );
