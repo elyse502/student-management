@@ -1,12 +1,15 @@
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App.tsx";
-import { BrowserRouter } from "react-router";
+import { BrowserRouter } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
+import { ThemeProvider } from "./features/theme/ThemeContext.tsx";
 
 createRoot(document.getElementById("root")!).render(
-  <BrowserRouter>
-    <App />
-    <Toaster position="top-right" />
-  </BrowserRouter>,
+  <ThemeProvider>
+    <BrowserRouter>
+      <App />
+      <Toaster position="top-right" />
+    </BrowserRouter>
+  </ThemeProvider>,
 );
