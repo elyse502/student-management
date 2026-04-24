@@ -1,8 +1,17 @@
+import { Navigate, Route, Routes } from "react-router";
+import MainLayout from "./components/layout/MainLayout";
+
 const App = () => {
   return (
-    <div>
-      <h1>Student Management System</h1>
-    </div>
+    <MainLayout>
+      <Routes>
+        <Route path="/" element={<Navigate to="/register" />} />
+        <Route path="/register" element={<div>Register</div>} />
+        <Route path="/confirmation" element={<div>Confirmation</div>} />
+        <Route path="/students" element={<div>Students</div>} />
+        <Route path="/course/:courseName" element={<div>Course</div>} />
+      </Routes>
+    </MainLayout>
   );
 };
 
