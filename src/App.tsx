@@ -4,6 +4,7 @@ import CoursesPage from "./pages/Course/CoursesPage";
 import CourseDetailsPage from "./pages/Course/CourseDetailsPage";
 import RegisterPage from "./pages/Register/RegisterPage";
 import ConfirmationPage from "./pages/Confirmation/ConfirmationPage";
+import StudentsPage from "./pages/Students/StudentsPage";
 
 const App = () => {
   return (
@@ -13,7 +14,7 @@ const App = () => {
 
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/confirmation" element={<ConfirmationPage />} />
-        <Route path="/students" element={<div>Students</div>} />
+        <Route path="/students" element={<StudentsPage />} />
 
         <Route path="/course" element={<CoursesPage />} />
         <Route path="/course/:courseName" element={<CourseDetailsPage />} />

@@ -24,3 +24,9 @@ export const saveStudent = (student: unknown) => {
   const students = getStudents();
   localStorage.setItem(STUDENTS_KEY, JSON.stringify([...students, student]));
 };
+
+export const deleteStudent = (id: string) => {
+  const students = getStudents();
+  const updated = students.filter((s: any) => s.id !== id);
+  localStorage.setItem(STUDENTS_KEY, JSON.stringify(updated));
+};
