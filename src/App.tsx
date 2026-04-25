@@ -3,6 +3,7 @@ import MainLayout from "./components/layout/MainLayout";
 import CoursesPage from "./pages/Course/CoursesPage";
 import CourseDetailsPage from "./pages/Course/CourseDetailsPage";
 import RegisterPage from "./pages/Register/RegisterPage";
+import ConfirmationPage from "./pages/Confirmation/ConfirmationPage";
 
 const App = () => {
   return (
@@ -11,7 +12,7 @@ const App = () => {
         <Route path="/" element={<Navigate to="/register" />} />
 
         <Route path="/register" element={<RegisterPage />} />
-        <Route path="/confirmation" element={<div>Confirmation</div>} />
+        <Route path="/confirmation" element={<ConfirmationPage />} />
         <Route path="/students" element={<div>Students</div>} />
 
         <Route path="/course" element={<CoursesPage />} />
