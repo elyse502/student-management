@@ -1,19 +1,30 @@
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { getDraft, clearDraft, saveStudent } from "../../utils/localStorage";
 
+const isValidDraft = (draft: any) => {
+  return draft && draft.fullName && draft.email && draft.phone && draft.course;
+};
+
 const ConfirmationPage = () => {
   const navigate = useNavigate();
-  const draft = getDraft();
+  const [draft, setDraft] = useState<any>(null);
 
-  if (!draft) {
-    return <div>No data found</div>;
-  }
+  useEffect(() => {
+    const data = getDraft();
 
-  if (!draft) {
-    navigate("/register");
-    return null;
-  }
+    if (!isValidDraft(data)) {
+      clearDraft(); // prevent future issues
+      toast.error("No valid draft found");
+      navigate("/register");
+      return;
+    }
+
+    setDraft(data);
+  }, [navigate]);
+
+  if (!draft) return null;
 
   const handleConfirm = () => {
     const student = {
@@ -25,7 +36,6 @@ const ConfirmationPage = () => {
     clearDraft();
 
     toast.success(`Student ${student.fullName} registered`);
-
     navigate("/students");
   };
 
