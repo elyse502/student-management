@@ -13,59 +13,72 @@ const StudentsPage = () => {
   };
 
   return (
-    <div className="space-y-4">
-      <h1 className="text-xl font-bold">Students</h1>
+    <div className="max-w-6xl mx-auto space-y-6">
+      {/* Header */}
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+        <h1 className="text-2xl font-bold">Students</h1>
+
+        <input
+          placeholder="Search by name..."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          className="w-full sm:w-64 p-2 border rounded-lg bg-gray-50 dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+      </div>
 
       {/* Summary */}
-      <div className="grid md:grid-cols-2 gap-4">
-        <div className="p-4 border rounded dark:border-gray-700">
-          <p>Total Students</p>
-          <p className="text-2xl font-bold">{summary.total}</p>
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="p-5 rounded-xl border dark:border-gray-700 bg-white dark:bg-gray-900 shadow-sm">
+          <p className="text-sm text-gray-500">Total Students</p>
+          <p className="text-3xl font-bold">{summary.total}</p>
         </div>
 
-        <div className="p-4 border rounded dark:border-gray-700">
-          <p>By Course</p>
-          {Object.entries(summary.byCourse).map(([course, count]) => (
-            <p key={course}>
-              {course}: {count as number}
-            </p>
-          ))}
+        <div className="p-5 rounded-xl border dark:border-gray-700 bg-white dark:bg-gray-900 shadow-sm col-span-2">
+          <p className="text-sm text-gray-500 mb-2">Students by Course</p>
+
+          <div className="flex flex-wrap gap-3">
+            {Object.entries(summary.byCourse).map(([course, count]) => (
+              <div
+                key={course}
+                className="px-3 py-1 rounded-full bg-gray-200 dark:bg-gray-700 text-sm"
+              >
+                {course}: {count as number}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
-      {/* Search */}
-      <input
-        placeholder="Search by name"
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-        className="w-full p-2 border rounded dark:bg-gray-800"
-      />
-
       {/* List */}
-      <div className="space-y-2">
+      <div className="space-y-3">
         {students.map((s) => (
           <div
             key={s.id}
-            className="p-4 border rounded dark:border-gray-700 flex justify-between items-center"
+            className="p-4 rounded-xl border dark:border-gray-700 bg-white dark:bg-gray-900 shadow-sm flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4"
           >
-            <div>
-              <p className="font-semibold">{s.fullName}</p>
-              <p className="text-sm">{s.email}</p>
-              <p className="text-sm">{s.phone}</p>
-              <p className="text-sm">{s.course}</p>
+            {/* Info */}
+            <div className="space-y-1">
+              <p className="font-semibold text-lg">{s.fullName}</p>
+              <p className="text-sm text-gray-500">{s.email}</p>
+              <p className="text-sm text-gray-500">{s.phone}</p>
+
+              <span className="inline-block mt-1 px-2 py-1 text-xs rounded bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300">
+                {s.course}
+              </span>
             </div>
 
+            {/* Actions */}
             <div className="flex gap-2">
               <Link
                 to={`/course/${s.course}`}
-                className="px-2 py-1 bg-blue-500 text-white rounded"
+                className="px-3 py-2 text-sm rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition"
               >
                 View Course
               </Link>
 
               <button
                 onClick={() => onDelete(s.id, s.fullName)}
-                className="px-2 py-1 bg-red-500 text-white rounded"
+                className="px-3 py-2 text-sm rounded-lg bg-red-600 text-white hover:bg-red-700 transition"
               >
                 Delete
               </button>
@@ -74,8 +87,9 @@ const StudentsPage = () => {
         ))}
       </div>
 
+      {/* Empty State */}
       {students.length === 0 && (
-        <p className="text-gray-500">No students found</p>
+        <div className="text-center py-10 text-gray-500">No students found</div>
       )}
     </div>
   );
