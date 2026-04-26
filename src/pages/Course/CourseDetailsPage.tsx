@@ -9,41 +9,64 @@ const CourseDetailsPage = () => {
   const course = COURSES.find((c) => c.name === courseName);
 
   if (!course) {
-    return <div>Course not found</div>;
+    return (
+      <div className="text-center py-10 text-gray-500">Course not found</div>
+    );
   }
 
   const students = getStudents();
   const enrolled = getStudentsByCourse(students, course.name);
 
   return (
-    <div className="space-y-4">
-      <h1 className="text-xl font-bold">{course.name}</h1>
-      <p>{course.description}</p>
+    <div className="max-w-5xl mx-auto space-y-6">
+      {/* Header */}
+      <div className="space-y-2">
+        <h1 className="text-2xl font-bold">{course.name}</h1>
+        <span className="inline-block px-3 py-1 text-xs rounded bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300">
+          {course.name}
+        </span>
+        <p className="text-gray-500">{course.description}</p>
+      </div>
 
-      <div>
-        <h2 className="font-semibold">Enrolled Students</h2>
+      {/* Stats */}
+      <div className="p-4 rounded-xl border dark:border-gray-700 bg-white dark:bg-gray-900 shadow-sm">
+        <p className="text-sm text-gray-500">Enrolled Students</p>
+        <p className="text-2xl font-bold">{enrolled.length}</p>
+      </div>
+
+      {/* Students List */}
+      <div className="space-y-3">
+        <h2 className="text-lg font-semibold">Students</h2>
 
         {enrolled.length === 0 ? (
-          <p className="text-gray-500">No students enrolled</p>
+          <div className="text-center py-10 text-gray-500 border rounded-xl dark:border-gray-700">
+            No students enrolled in this course
+          </div>
         ) : (
-          <div className="space-y-2">
+          <div className="grid sm:grid-cols-2 gap-4">
             {enrolled.map((s) => (
               <div
                 key={s.id}
-                className="p-3 border rounded dark:border-gray-700"
+                className="p-4 rounded-xl border dark:border-gray-700 bg-white dark:bg-gray-900 shadow-sm"
               >
-                <p className="font-medium">{s.fullName}</p>
-                <p className="text-sm">{s.email}</p>
-                <p className="text-sm">{s.phone}</p>
+                <p className="font-semibold">{s.fullName}</p>
+                <p className="text-sm text-gray-500">{s.email}</p>
+                <p className="text-sm text-gray-500">{s.phone}</p>
               </div>
             ))}
           </div>
         )}
       </div>
 
-      <Link to="/course" className="text-blue-500">
-        Back to Courses
-      </Link>
+      {/* Navigation */}
+      <div>
+        <Link
+          to="/course"
+          className="inline-block text-blue-600 hover:underline"
+        >
+          ← Back to Courses
+        </Link>
+      </div>
     </div>
   );
 };
