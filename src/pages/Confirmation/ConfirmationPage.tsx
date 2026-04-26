@@ -15,7 +15,7 @@ const ConfirmationPage = () => {
     const data = getDraft();
 
     if (!isValidDraft(data)) {
-      clearDraft(); // prevent future issues
+      clearDraft();
       toast.error("No valid draft found");
       navigate("/register");
       return;
@@ -44,38 +44,55 @@ const ConfirmationPage = () => {
   };
 
   return (
-    <div className="max-w-xl mx-auto space-y-4">
-      <h1 className="text-xl font-bold">Confirm Student</h1>
+    <div className="min-h-[80vh] flex items-center justify-center">
+      <div className="w-full max-w-xl bg-white dark:bg-gray-900 shadow-lg rounded-xl p-6 space-y-6 border dark:border-gray-700">
+        {/* Header */}
+        <div className="text-center space-y-1">
+          <h1 className="text-2xl font-bold">Confirm Details</h1>
+          <p className="text-sm text-gray-500">
+            Review before final submission
+          </p>
+        </div>
 
-      <div className="p-4 border rounded dark:border-gray-700 space-y-2">
-        <p>
-          <strong>Name:</strong> {draft.fullName}
-        </p>
-        <p>
-          <strong>Email:</strong> {draft.email}
-        </p>
-        <p>
-          <strong>Phone:</strong> {draft.phone}
-        </p>
-        <p>
-          <strong>Course:</strong> {draft.course}
-        </p>
-      </div>
+        {/* Data Preview */}
+        <div className="rounded-lg border dark:border-gray-700 divide-y dark:divide-gray-700">
+          <div className="flex justify-between p-4">
+            <span className="text-gray-500">Full Name</span>
+            <span className="font-medium">{draft.fullName}</span>
+          </div>
 
-      <div className="flex gap-4">
-        <button
-          onClick={handleConfirm}
-          className="flex-1 p-2 bg-green-500 text-white rounded"
-        >
-          Confirm Registration
-        </button>
+          <div className="flex justify-between p-4">
+            <span className="text-gray-500">Email</span>
+            <span className="font-medium">{draft.email}</span>
+          </div>
 
-        <button
-          onClick={handleEdit}
-          className="flex-1 p-2 bg-gray-400 text-white rounded"
-        >
-          Edit Information
-        </button>
+          <div className="flex justify-between p-4">
+            <span className="text-gray-500">Phone</span>
+            <span className="font-medium">{draft.phone}</span>
+          </div>
+
+          <div className="flex justify-between p-4">
+            <span className="text-gray-500">Course</span>
+            <span className="font-medium">{draft.course}</span>
+          </div>
+        </div>
+
+        {/* Actions */}
+        <div className="flex flex-col sm:flex-row gap-3">
+          <button
+            onClick={handleConfirm}
+            className="flex-1 py-3 rounded-lg text-white font-medium bg-green-600 hover:bg-green-700 transition"
+          >
+            Confirm Registration
+          </button>
+
+          <button
+            onClick={handleEdit}
+            className="flex-1 py-3 rounded-lg border border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-800 transition"
+          >
+            Edit Information
+          </button>
+        </div>
       </div>
     </div>
   );
