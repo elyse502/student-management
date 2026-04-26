@@ -2,6 +2,8 @@
 
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 * {
   box-sizing: border-box;
   font-family: "Outfit", sans-serif;
@@ -9,9 +11,4 @@
 
 button {
   cursor: pointer;
-}
-
-.dark body {
-  background: black;
-  color: white;
 }
