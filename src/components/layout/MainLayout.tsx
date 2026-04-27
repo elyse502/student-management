@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import Navbar from "./Navbar";
+import Footer from "./Footer";
 
 type Props = {
   children: ReactNode;
@@ -7,9 +8,12 @@ type Props = {
 
 const MainLayout = ({ children }: Props) => {
   return (
-    <div className="min-h-screen bg-white text-black dark:bg-gray-900 dark:text-white transition-colors duration-300">
+    <div className="min-h-screen flex flex-col bg-white text-black dark:bg-gray-900 dark:text-white transition-colors duration-300">
       <Navbar />
-      <div className="p-4">{children}</div>
+
+      <main className="flex-1 p-4">{children}</main>
+
+      <Footer />
     </div>
   );
 };
