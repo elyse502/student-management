@@ -16,6 +16,14 @@ A modern, production-ready student management system built with React, TypeScrip
 ![React Hot Toast](https://img.shields.io/badge/React_Hot_Toast-2.4.0-FF5F6D?style=flat-square&logo=react&logoColor=white)
 ![LocalStorage](https://img.shields.io/badge/LocalStorage-API-FFC107?style=flat-square&logo=javascript&logoColor=black)
 
+## 🚀 Live Demo
+
+Visit the 👉 [_LINK 🔗_](https://sms-ecru-chi.vercel.app)
+
+| Register Page                                | Courses Page                               |
+| -------------------------------------------- | ------------------------------------------ |
+| ![Register-Page](./assets/register-page.png) | ![Courses-Page](./assets/courses-page.png) |
+
 </div>
 
 ---
@@ -24,6 +32,7 @@ A modern, production-ready student management system built with React, TypeScrip
 
 - [🎓 Student Management System 👨‍🎓](#-student-management-system-)
   - [**Built with:**](#built-with)
+  - [🚀 Live Demo](#-live-demo)
   - [📋 Table of Contents](#-table-of-contents)
   - [✨ Features Overview](#-features-overview)
   - [🛠️ Tech Stack](#️-tech-stack)
